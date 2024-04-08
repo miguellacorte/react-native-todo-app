@@ -7,14 +7,9 @@ import React, { useState } from "react";
 
 export default function App() {
   const [goals, setGoals] = useState([]);
-  const [enteredGoal, setEnteredGoal] = useState("");
+  
 
-  function goalInputHandler(enteredText) {
-    setEnteredGoal(enteredText);
-    // console.log("goalinputhandler:", enteredText);
-  }
-
-  function addGoalHandler() {
+  function addGoalHandler(enteredGoalText) {
     //best practices on state update is your state depends on the previous state:
     //use a function that receives the current state as an argument
     //and then returns the updated state
@@ -23,14 +18,13 @@ export default function App() {
     setGoals((currentCourseGoals) => [
       ...currentCourseGoals,
 
-      { text: enteredGoal, key: Math.random().toString() },
+      { text: enteredGoalText, key: Math.random().toString() },
     ]);
   }
   return (
     <SafeAreaView style={styles.appContainer}>
       <GoalInput
         goalHandleFunction={addGoalHandler}
-        goalInputHandler={goalInputHandler}
       />
 
       <View style={styles.bottomContainer}>

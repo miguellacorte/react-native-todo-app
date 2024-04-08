@@ -1,8 +1,18 @@
-import React from "react";
+import {useState} from "react";
 import { Pressable, Text, StyleSheet, TextInput, View } from "react-native";
 
 const GoalInput = (props) => {
-  
+  const [enteredGoal, setEnteredGoal] = useState("");
+
+  function goalInputHandler(enteredText) {
+    setEnteredGoal(enteredText);
+    // console.log("goalinputhandler:", enteredText);
+  }
+
+  function addGoalHandler() {
+    props.goalHandleFunction(enteredGoal);
+    setEnteredGoal("");
+  }
   return (
     <View style={styles.topContainer}>
       <TextInput
@@ -11,9 +21,10 @@ const GoalInput = (props) => {
         // when the text changes, the function goalInputHandler is executed
         // if i where to add the () at the end of the function,
         // it would be executed immediately when the ui is rendered
-        onChangeText={props.goalInputHandler}
+        onChangeText={goalInputHandler}
+        value={enteredGoal}
       ></TextInput>
-      <Pressable style={styles.button} onPress={props.goalHandleFunction}>
+      <Pressable style={styles.button} onPress={addGoalHandler}>
         <Text style={{ color: "white" }}>Add goal</Text>
       </Pressable>
     </View>
