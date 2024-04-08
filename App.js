@@ -1,22 +1,22 @@
 import {
-  Button,
   StyleSheet,
   Text,
   TextInput,
   View,
   SafeAreaView,
   Pressable,
+  FlatList,
 } from "react-native";
 
 import React, { useState } from "react";
 
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState("");
-  const [goals, setGoals] = useState(['']);
+  const [goals, setGoals] = useState([]);
 
   function goalInputHandler(enteredText) {
     setEnteredGoal(enteredText);
-    console.log("goalinputhandler:", enteredText);
+    // console.log("goalinputhandler:", enteredText);
   }
 
   function addGoalHandler() {
@@ -25,8 +25,12 @@ export default function App() {
     //and then returns the updated state
     //this is because react schedules state updates and it might not be
     //immediate, so it's better to use the function approach
-    setGoals((currentCourseGoals) => [...currentCourseGoals, enteredGoal,]);
-    console.log("goals:", goals);
+    setGoals((currentCourseGoals) => [
+      ...currentCourseGoals,
+
+      { text: enteredGoal, key: Math.random().toString() },
+    ]);
+    // console.log("goals:", goals);
   }
 
   return (
@@ -47,13 +51,16 @@ export default function App() {
       </View>
 
       <View style={styles.bottomContainer}>
-        {goals.map((goal) => (
-          // it's important to add a key to the component
-          // this is to help react to identify the component
-          // and to be able to update it efficiently
-          // each key should be unique
-          <Text style={styles.text} key={goal}> {goal} </Text>
-        ))}
+        <FlatList
+          data={goals}
+          renderItem={(itemData) => {
+            return (
+              <View style={styles.goalContainers}>
+                <Text style={styles.goalText}>{itemData.item.text}</Text>
+              </View>
+            );
+          }}
+        ></FlatList>
       </View>
     </SafeAreaView>
   );
@@ -97,13 +104,20 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flex: 10,
-    margin: 15,
+    margin: 20,
+  },
+  goalContainers: {
     flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "flex-start",
+    borderRadius: 10,
+    backgroundColor: "#007AFF",
+    width: "100%",
+    marginBottom: 10,
+    fontSize: 15,
+    padding: 10,
   },
-  text: {
-    color: "black",
-    fontSize: 20,
+  goalText: {
+    color: "white",
   },
 });
