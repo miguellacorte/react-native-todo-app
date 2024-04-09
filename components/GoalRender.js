@@ -1,15 +1,21 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, Pressable, View } from "react-native";
 
 const GoalRender = (props) => {
   return (
-    <View style={styles.goalContainers}>
-      <Text style={styles.goalText}>{props.itemData.item.text}</Text>
-    </View>
+    <Pressable
+      style={styles.goalContainers}
+      onPress={props.deleteItemFunction.bind(this, props.id)}
+    >
+      <Text style={styles.goalText}> {props.itemData.item.text}</Text>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
+  pressedItem: {
+    opacity: 0.1,
+  },
   goalContainers: {
     flexDirection: "column",
     alignItems: "flex-start",

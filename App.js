@@ -28,7 +28,13 @@ export default function App() {
     ]);
   }
 
-  function deleteGoalHandler() {
+  function deleteGoalHandler(id) {
+    setGoals((currentCourseGoals) => {
+      return currentCourseGoals.filter((goal) => goal.id !== id);
+    });
+  }
+
+  function deleteLastItem() {
     setGoals((currentCourseGoals) => {
       const newGoals = [...currentCourseGoals]; // create a copy of the current goals
       newGoals.pop(); // remove the last item
@@ -43,11 +49,24 @@ export default function App() {
         <FlatList
           data={goals}
           renderItem={(itemData) => {
-            return <GoalRender itemData={itemData} />;
+            return (
+              <GoalRender
+                itemData={itemData}
+                id={itemData.item.id}
+                deleteItemFunction={deleteGoalHandler}
+              />
+            );
           }}
         ></FlatList>
       </View>
-      <Pressable style={styles.deleteContainer} onPress={deleteGoalHandler}>
+
+      <Pressable
+        android_ripple={{ color: "black" }}
+        style={({ pressed }) =>
+          pressed ? styles.pressedItem : styles.deleteContainer
+        }
+        onPress={deleteLastItem}
+      >
         <View style={styles.deleteContainerView}>
           <Text style={styles.deleteContainerText}>
             Delete last item in list
@@ -59,9 +78,16 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  pressedItem: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingBottom: 30,
+    opacity: 0.3,
+  },
   deleteContainer: {
     flex: 1,
-    backgroundColor: "transparent",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Pressable, Text, StyleSheet, TextInput, View } from "react-native";
 
 const GoalInput = (props) => {
@@ -24,7 +24,10 @@ const GoalInput = (props) => {
         onChangeText={goalInputHandler}
         value={enteredGoal}
       ></TextInput>
-      <Pressable style={styles.button} onPress={addGoalHandler}>
+      <Pressable
+        onPress={addGoalHandler}
+        style={({ pressed }) => (pressed ? styles.pressedItem : styles.button)}
+      >
         <Text style={{ color: "white" }}>Add goal</Text>
       </Pressable>
     </View>
@@ -32,6 +35,18 @@ const GoalInput = (props) => {
 };
 
 const styles = StyleSheet.create({
+  pressedItem: {
+    opacity: 0.6,
+    justifyContent: "center",
+    alignItems: "center",
+    color: "blue",
+    borderRadius: 10,
+    backgroundColor: "#007AFF",
+    borderWidth: 1,
+    borderColor: "#007AFF",
+    padding: 10,
+    width: "30%",
+  },
   input: {
     borderRadius: 10,
     padding: 10,
