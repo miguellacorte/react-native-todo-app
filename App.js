@@ -43,6 +43,7 @@ export default function App() {
   }
   return (
     <SafeAreaView style={styles.appContainer}>
+    
       <GoalInput goalHandleFunction={addGoalHandler} />
 
       <View style={styles.bottomContainer}>
@@ -60,8 +61,8 @@ export default function App() {
         ></FlatList>
       </View>
 
+
       <Pressable
-        android_ripple={{ color: "black" }}
         style={({ pressed }) =>
           pressed ? styles.pressedItem : styles.deleteContainer
         }
@@ -106,6 +107,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   appContainer: {
+    backgroundColor: '#ffffff',
     flex: 1,
     padding: 10,
   },

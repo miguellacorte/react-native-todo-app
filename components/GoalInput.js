@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Pressable, Text, StyleSheet, TextInput, View } from "react-native";
+import {
+  Pressable,
+  Text,
+  StyleSheet,
+  TextInput,
+  View
+} from "react-native";
+
 
 const GoalInput = (props) => {
   const [enteredGoal, setEnteredGoal] = useState("");
@@ -15,9 +22,10 @@ const GoalInput = (props) => {
   }
   return (
     <View style={styles.topContainer}>
+    
       <TextInput
         style={styles.input}
-        placeholder="Type your goals..."
+        placeholder="Type here..."
         // when the text changes, the function goalInputHandler is executed
         // if i where to add the () at the end of the function,
         // it would be executed immediately when the ui is rendered
@@ -28,7 +36,7 @@ const GoalInput = (props) => {
         onPress={addGoalHandler}
         style={({ pressed }) => (pressed ? styles.pressedItem : styles.button)}
       >
-        <Text style={{ color: "white" }}>Add goal</Text>
+        <Text style={{ color: "white" }}>Add</Text>
       </Pressable>
     </View>
   );
@@ -36,6 +44,7 @@ const GoalInput = (props) => {
 
 const styles = StyleSheet.create({
   pressedItem: {
+    marginBottom: 20,
     opacity: 0.6,
     justifyContent: "center",
     alignItems: "center",
@@ -48,6 +57,8 @@ const styles = StyleSheet.create({
     width: "30%",
   },
   input: {
+    flex: 4,
+    color: "black",
     borderRadius: 10,
     padding: 10,
     height: 40,
@@ -57,16 +68,16 @@ const styles = StyleSheet.create({
     width: "70%",
   },
   topContainer: {
-    flex: 1,
     margin: 20,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: 20,
-    borderBottomColor: "#cccccc",
-    borderBottomWidth: 1,
+    borderBottomColor: "Black",
+    borderBottomWidth: 0.5,
   },
   button: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     color: "blue",
