@@ -1,8 +1,9 @@
 # Quick Notes App
 
-This application is a practice project built using React Native. It's a simple yet powerful tool that allows users to take quick and limited notes. In our fast-paced daily life, it's often necessary to jot down important points, ideas, or tasks. This app serves exactly that purpose. It's designed to be quick, efficient, and easy to use.
+This application is a practice project built using React Native. It's a simple yet powerful tool that allows users to take quick and limited notes. 
 
-![Screenshot](/assets/Screenshot%202024-04-09%20at%2019.25.28.png)
+<img src="/assets/Screenshot%202024-04-09%20at%2019.25.28.png" width="300" alt="Screenshot">
+
 
 ## Functionality
 
