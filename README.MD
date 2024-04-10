@@ -5,7 +5,7 @@
     </td>
     <td>
 Quick Notes App
-      This application is a practice project built using React Native. It's a simple yet powerful tool that allows users to take quick and limited notes.
+      This application is a practice project built using React Native. It's a simple tool that allows users to take quick and limited notes.
     </td>
   </tr>
 </table>
