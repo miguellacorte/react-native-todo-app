@@ -4,7 +4,6 @@
       <img src="/assets/Screenshot%202024-04-09%20at%2019.25.28.png" width="150" alt="Screenshot" />
     </td>
     <td>
-Quick Notes App
       This application is a practice project built using React Native. It's a simple tool that allows users to take quick and limited notes.
     </td>
   </tr>
